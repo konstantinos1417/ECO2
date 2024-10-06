@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_ec49d232fbb8fc2d4a436b8a6aacf713 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_ec49d232fbb8fc2d4a436b8a6aacf713" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_ec49d232fbb8fc2d4a436b8a6aacf713 = L.map(
+                "map_ec49d232fbb8fc2d4a436b8a6aacf713",
+                {
+                    center: [34.137, -118.126],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f8fdb6bab55b7623b41189a9eaa6f0a4 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 8, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
+            );
+        
+    
+            tile_layer_f8fdb6bab55b7623b41189a9eaa6f0a4.addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+    var color_map_b793a3194373a796213e622380046eaa = {};
+
+    
+    color_map_b793a3194373a796213e622380046eaa.color = d3.scale.threshold()
+              .domain([2100.0, 2100.1603206412824, 2100.3206412825652, 2100.4809619238476, 2100.64128256513, 2100.801603206413, 2100.9619238476953, 2101.122244488978, 2101.2825651302605, 2101.442885771543, 2101.603206412826, 2101.763527054108, 2101.9238476953906, 2102.0841683366734, 2102.244488977956, 2102.4048096192387, 2102.565130260521, 2102.7254509018035, 2102.8857715430863, 2103.0460921843687, 2103.206412825651, 2103.366733466934, 2103.5270541082164, 2103.687374749499, 2103.8476953907816, 2104.008016032064, 2104.168336673347, 2104.3286573146293, 2104.4889779559117, 2104.6492985971945, 2104.809619238477, 2104.9699398797593, 2105.130260521042, 2105.2905811623245, 2105.4509018036074, 2105.61122244489, 2105.771543086172, 2105.931863727455, 2106.0921843687374, 2106.25250501002, 2106.4128256513027, 2106.573146292585, 2106.733466933868, 2106.8937875751503, 2107.0541082164327, 2107.2144288577156, 2107.374749498998, 2107.5350701402804, 2107.695390781563, 2107.8557114228456, 2108.0160320641285, 2108.176352705411, 2108.3366733466933, 2108.496993987976, 2108.6573146292585, 2108.817635270541, 2108.9779559118238, 2109.138276553106, 2109.298597194389, 2109.4589178356714, 2109.619238476954, 2109.7795591182366, 2109.939879759519, 2110.1002004008014, 2110.2605210420843, 2110.4208416833667, 2110.581162324649, 2110.741482965932, 2110.9018036072143, 2111.062124248497, 2111.2224448897796, 2111.382765531062, 2111.543086172345, 2111.703406813627, 2111.8637274549096, 2112.0240480961925, 2112.184368737475, 2112.3446893787577, 2112.50501002004, 2112.6653306613225, 2112.8256513026054, 2112.9859719438878, 2113.14629258517, 2113.306613226453, 2113.4669338677354, 2113.6272545090183, 2113.7875751503007, 2113.947895791583, 2114.108216432866, 2114.2685370741483, 2114.4288577154307, 2114.5891783567135, 2114.749498997996, 2114.9098196392783, 2115.070140280561, 2115.2304609218436, 2115.3907815631264, 2115.551102204409, 2115.7114228456912, 2115.871743486974, 2116.0320641282565, 2116.192384769539, 2116.3527054108217, 2116.513026052104, 2116.673346693387, 2116.8336673346694, 2116.9939879759518, 2117.1543086172346, 2117.314629258517, 2117.4749498997994, 2117.6352705410823, 2117.7955911823647, 2117.9559118236475, 2118.11623246493, 2118.2765531062123, 2118.436873747495, 2118.5971943887776, 2118.75751503006, 2118.917835671343, 2119.078156312625, 2119.2384769539076, 2119.3987975951904, 2119.559118236473, 2119.7194388777557, 2119.879759519038, 2120.0400801603205, 2120.2004008016033, 2120.3607214428857, 2120.521042084168, 2120.681362725451, 2120.8416833667334, 2121.0020040080162, 2121.1623246492986, 2121.322645290581, 2121.482965931864, 2121.6432865731463, 2121.8036072144287, 2121.9639278557115, 2122.124248496994, 2122.2845691382768, 2122.444889779559, 2122.6052104208416, 2122.7655310621244, 2122.925851703407, 2123.086172344689, 2123.246492985972, 2123.4068136272545, 2123.5671342685373, 2123.7274549098197, 2123.887775551102, 2124.048096192385, 2124.2084168336673, 2124.3687374749497, 2124.5290581162326, 2124.689378757515, 2124.8496993987974, 2125.0100200400802, 2125.1703406813626, 2125.3306613226455, 2125.490981963928, 2125.6513026052103, 2125.811623246493, 2125.9719438877755, 2126.132264529058, 2126.2925851703408, 2126.452905811623, 2126.613226452906, 2126.7735470941884, 2126.933867735471, 2127.0941883767537, 2127.254509018036, 2127.4148296593185, 2127.5751503006013, 2127.7354709418837, 2127.8957915831666, 2128.056112224449, 2128.2164328657313, 2128.376753507014, 2128.5370741482966, 2128.697394789579, 2128.857715430862, 2129.0180360721442, 2129.1783567134266, 2129.3386773547095, 2129.498997995992, 2129.6593186372747, 2129.819639278557, 2129.9799599198395, 2130.1402805611224, 2130.300601202405, 2130.460921843687, 2130.62124248497, 2130.7815631262524, 2130.9418837675353, 2131.1022044088177, 2131.2625250501, 2131.422845691383, 2131.5831663326653, 2131.7434869739477, 2131.9038076152306, 2132.064128256513, 2132.224448897796, 2132.384769539078, 2132.5450901803606, 2132.7054108216435, 2132.865731462926, 2133.0260521042082, 2133.186372745491, 2133.3466933867735, 2133.507014028056, 2133.6673346693387, 2133.827655310621, 2133.987975951904, 2134.1482965931864, 2134.308617234469, 2134.4689378757516, 2134.629258517034, 2134.7895791583164, 2134.9498997995993, 2135.1102204408817, 2135.2705410821645, 2135.430861723447, 2135.5911823647293, 2135.751503006012, 2135.9118236472946, 2136.072144288577, 2136.23246492986, 2136.392785571142, 2136.553106212425, 2136.7134268537075, 2136.87374749499, 2137.0340681362727, 2137.194388777555, 2137.3547094188375, 2137.5150300601204, 2137.6753507014027, 2137.8356713426856, 2137.995991983968, 2138.1563126252504, 2138.3166332665332, 2138.4769539078156, 2138.637274549098, 2138.797595190381, 2138.9579158316633, 2139.1182364729457, 2139.2785571142285, 2139.438877755511, 2139.599198396794, 2139.759519038076, 2139.9198396793586, 2140.0801603206414, 2140.240480961924, 2140.400801603206, 2140.561122244489, 2140.7214428857715, 2140.8817635270543, 2141.0420841683367, 2141.202404809619, 2141.362725450902, 2141.5230460921844, 2141.6833667334668, 2141.8436873747496, 2142.004008016032, 2142.1643286573144, 2142.3246492985973, 2142.4849699398796, 2142.6452905811625, 2142.805611222445, 2142.9659318637273, 2143.12625250501, 2143.2865731462925, 2143.446893787575, 2143.607214428858, 2143.76753507014, 2143.927855711423, 2144.0881763527054, 2144.248496993988, 2144.4088176352707, 2144.569138276553, 2144.7294589178355, 2144.8897795591183, 2145.0501002004007, 2145.2104208416836, 2145.370741482966, 2145.5310621242484, 2145.691382765531, 2145.8517034068136, 2146.012024048096, 2146.172344689379, 2146.3326653306613, 2146.492985971944, 2146.6533066132265, 2146.813627254509, 2146.9739478957918, 2147.134268537074, 2147.2945891783565, 2147.4549098196394, 2147.615230460922, 2147.775551102204, 2147.935871743487, 2148.0961923847694, 2148.2565130260523, 2148.4168336673347, 2148.577154308617, 2148.7374749499, 2148.8977955911823, 2149.0581162324647, 2149.2184368737476, 2149.37875751503, 2149.539078156313, 2149.699398797595, 2149.8597194388776, 2150.0200400801605, 2150.180360721443, 2150.3406813627253, 2150.501002004008, 2150.6613226452905, 2150.8216432865734, 2150.9819639278558, 2151.142284569138, 2151.302605210421, 2151.4629258517034, 2151.623246492986, 2151.7835671342687, 2151.943887775551, 2152.1042084168334, 2152.2645290581163, 2152.4248496993987, 2152.5851703406815, 2152.745490981964, 2152.9058116232463, 2153.066132264529, 2153.2264529058116, 2153.386773547094, 2153.547094188377, 2153.7074148296592, 2153.867735470942, 2154.0280561122245, 2154.188376753507, 2154.3486973947897, 2154.509018036072, 2154.6693386773545, 2154.8296593186374, 2154.9899799599198, 2155.1503006012026, 2155.310621242485, 2155.4709418837674, 2155.6312625250503, 2155.7915831663327, 2155.951903807615, 2156.112224448898, 2156.2725450901803, 2156.4328657314627, 2156.5931863727455, 2156.753507014028, 2156.913827655311, 2157.074148296593, 2157.2344689378756, 2157.3947895791584, 2157.555110220441, 2157.7154308617232, 2157.875751503006, 2158.0360721442885, 2158.1963927855713, 2158.3567134268537, 2158.517034068136, 2158.677354709419, 2158.8376753507014, 2158.9979959919838, 2159.1583166332666, 2159.318637274549, 2159.478957915832, 2159.6392785571143, 2159.7995991983967, 2159.9599198396795, 2160.120240480962, 2160.2805611222443, 2160.440881763527, 2160.6012024048096, 2160.7615230460924, 2160.921843687375, 2161.082164328657, 2161.24248496994, 2161.4028056112224, 2161.563126252505, 2161.7234468937877, 2161.88376753507, 2162.0440881763525, 2162.2044088176353, 2162.3647294589177, 2162.5250501002006, 2162.685370741483, 2162.8456913827654, 2163.0060120240482, 2163.1663326653306, 2163.326653306613, 2163.486973947896, 2163.6472945891783, 2163.807615230461, 2163.9679358717435, 2164.128256513026, 2164.2885771543088, 2164.448897795591, 2164.6092184368736, 2164.7695390781564, 2164.929859719439, 2165.0901803607217, 2165.250501002004, 2165.4108216432865, 2165.5711422845693, 2165.7314629258517, 2165.891783567134, 2166.052104208417, 2166.2124248496993, 2166.372745490982, 2166.5330661322646, 2166.693386773547, 2166.85370741483, 2167.0140280561122, 2167.1743486973946, 2167.3346693386775, 2167.49498997996, 2167.6553106212423, 2167.815631262525, 2167.9759519038075, 2168.1362725450904, 2168.296593186373, 2168.456913827655, 2168.617234468938, 2168.7775551102204, 2168.937875751503, 2169.0981963927857, 2169.258517034068, 2169.418837675351, 2169.5791583166333, 2169.7394789579157, 2169.8997995991986, 2170.060120240481, 2170.2204408817634, 2170.380761523046, 2170.5410821643286, 2170.701402805611, 2170.861723446894, 2171.0220440881762, 2171.182364729459, 2171.3426853707415, 2171.503006012024, 2171.6633266533067, 2171.823647294589, 2171.9839679358715, 2172.1442885771544, 2172.304609218437, 2172.4649298597196, 2172.625250501002, 2172.7855711422844, 2172.9458917835673, 2173.1062124248497, 2173.266533066132, 2173.426853707415, 2173.5871743486973, 2173.74749498998, 2173.9078156312626, 2174.068136272545, 2174.228456913828, 2174.38877755511, 2174.5490981963926, 2174.7094188376755, 2174.869739478958, 2175.0300601202407, 2175.190380761523, 2175.3507014028055, 2175.5110220440883, 2175.6713426853707, 2175.831663326653, 2175.991983967936, 2176.1523046092184, 2176.312625250501, 2176.4729458917836, 2176.633266533066, 2176.793587174349, 2176.9539078156313, 2177.1142284569137, 2177.2745490981965, 2177.434869739479, 2177.5951903807613, 2177.755511022044, 2177.9158316633266, 2178.0761523046094, 2178.236472945892, 2178.396793587174, 2178.557114228457, 2178.7174348697395, 2178.877755511022, 2179.0380761523047, 2179.198396793587, 2179.35871743487, 2179.5190380761524, 2179.6793587174348, 2179.8396793587176, 2180.0])
+              .range(['#008000ff', '#008000ff', '#017f00ff', '#017f00ff', '#027f00ff', '#027f00ff', '#037e00ff', '#037e00ff', '#047e00ff', '#047e00ff', '#057d00ff', '#057d00ff', '#067d00ff', '#067d00ff', '#077c00ff', '#077c00ff', '#087c00ff', '#087c00ff', '#097b00ff', '#097b00ff', '#0a7b00ff', '#0a7b00ff', '#0b7a00ff', '#0b7a00ff', '#0c7a00ff', '#0c7a00ff', '#0d7900ff', '#0d7900ff', '#0e7900ff', '#0e7900ff', '#0f7800ff', '#0f7800ff', '#107800ff', '#107800ff', '#117700ff', '#117700ff', '#127700ff', '#127600ff', '#137600ff', '#147600ff', '#147600ff', '#157500ff', '#157500ff', '#167500ff', '#167500ff', '#177400ff', '#177400ff', '#187400ff', '#187400ff', '#197300ff', '#197300ff', '#1a7300ff', '#1a7300ff', '#1b7200ff', '#1b7200ff', '#1c7200ff', '#1c7200ff', '#1d7100ff', '#1d7100ff', '#1e7100ff', '#1e7100ff', '#1f7000ff', '#1f7000ff', '#207000ff', '#207000ff', '#216f00ff', '#216f00ff', '#226f00ff', '#226e00ff', '#236e00ff', '#236e00ff', '#246e00ff', '#246d00ff', '#256d00ff', '#256d00ff', '#266d00ff', '#266c00ff', '#276c00ff', '#286c00ff', '#286c00ff', '#296b00ff', '#296b00ff', '#2a6b00ff', '#2a6b00ff', '#2b6a00ff', '#2b6a00ff', '#2c6a00ff', '#2c6a00ff', '#2d6900ff', '#2d6900ff', '#2e6900ff', '#2e6900ff', '#2f6800ff', '#2f6800ff', '#306800ff', '#306800ff', '#316700ff', '#316700ff', '#326700ff', '#326700ff', '#336600ff', '#336600ff', '#346600ff', '#346500ff', '#356500ff', '#356500ff', '#366500ff', '#366400ff', '#376400ff', '#376400ff', '#386400ff', '#386300ff', '#396300ff', '#396300ff', '#3a6300ff', '#3a6200ff', '#3b6200ff', '#3c6200ff', '#3c6200ff', '#3d6100ff', '#3d6100ff', '#3e6100ff', '#3e6100ff', '#3f6000ff', '#3f6000ff', '#406000ff', '#406000ff', '#415f00ff', '#415f00ff', '#425f00ff', '#425f00ff', '#435e00ff', '#435e00ff', '#445e00ff', '#445d00ff', '#455d00ff', '#455d00ff', '#465d00ff', '#465c00ff', '#475c00ff', '#475c00ff', '#485c00ff', '#485b00ff', '#495b00ff', '#495b00ff', '#4a5b00ff', '#4a5a00ff', '#4b5a00ff', '#4b5a00ff', '#4c5a00ff', '#4c5900ff', '#4d5900ff', '#4d5900ff', '#4e5900ff', '#4f5800ff', '#4f5800ff', '#505800ff', '#505800ff', '#515700ff', '#515700ff', '#525700ff', '#525700ff', '#535600ff', '#535600ff', '#545600ff', '#545600ff', '#555500ff', '#555500ff', '#565500ff', '#565400ff', '#575400ff', '#575400ff', '#585400ff', '#585300ff', '#595300ff', '#595300ff', '#5a5300ff', '#5a5200ff', '#5b5200ff', '#5b5200ff', '#5c5200ff', '#5c5100ff', '#5d5100ff', '#5d5100ff', '#5e5100ff', '#5e5000ff', '#5f5000ff', '#5f5000ff', '#605000ff', '#604f00ff', '#614f00ff', '#614f00ff', '#624f00ff', '#634e00ff', '#634e00ff', '#644e00ff', '#644e00ff', '#654d00ff', '#654d00ff', '#664d00ff', '#664c00ff', '#674c00ff', '#674c00ff', '#684c00ff', '#684b00ff', '#694b00ff', '#694b00ff', '#6a4b00ff', '#6a4a00ff', '#6b4a00ff', '#6b4a00ff', '#6c4a00ff', '#6c4900ff', '#6d4900ff', '#6d4900ff', '#6e4900ff', '#6e4800ff', '#6f4800ff', '#6f4800ff', '#704800ff', '#704700ff', '#714700ff', '#714700ff', '#724700ff', '#724600ff', '#734600ff', '#734600ff', '#744600ff', '#744500ff', '#754500ff', '#754500ff', '#764500ff', '#774400ff', '#774400ff', '#784400ff', '#784300ff', '#794300ff', '#794300ff', '#7a4300ff', '#7a4200ff', '#7b4200ff', '#7b4200ff', '#7c4200ff', '#7c4100ff', '#7d4100ff', '#7d4100ff', '#7e4100ff', '#7e4000ff', '#7f4000ff', '#7f4000ff', '#804000ff', '#803f00ff', '#813f00ff', '#813f00ff', '#823f00ff', '#823e00ff', '#833e00ff', '#833e00ff', '#843e00ff', '#843d00ff', '#853d00ff', '#853d00ff', '#863d00ff', '#863c00ff', '#873c00ff', '#873c00ff', '#883c00ff', '#883b00ff', '#893b00ff', '#8a3b00ff', '#8a3a00ff', '#8b3a00ff', '#8b3a00ff', '#8c3a00ff', '#8c3900ff', '#8d3900ff', '#8d3900ff', '#8e3900ff', '#8e3800ff', '#8f3800ff', '#8f3800ff', '#903800ff', '#903700ff', '#913700ff', '#913700ff', '#923700ff', '#923600ff', '#933600ff', '#933600ff', '#943600ff', '#943500ff', '#953500ff', '#953500ff', '#963500ff', '#963400ff', '#973400ff', '#973400ff', '#983400ff', '#983300ff', '#993300ff', '#993300ff', '#9a3200ff', '#9a3200ff', '#9b3200ff', '#9b3200ff', '#9c3100ff', '#9c3100ff', '#9d3100ff', '#9e3100ff', '#9e3000ff', '#9f3000ff', '#9f3000ff', '#a03000ff', '#a02f00ff', '#a12f00ff', '#a12f00ff', '#a22f00ff', '#a22e00ff', '#a32e00ff', '#a32e00ff', '#a42e00ff', '#a42d00ff', '#a52d00ff', '#a52d00ff', '#a62d00ff', '#a62c00ff', '#a72c00ff', '#a72c00ff', '#a82c00ff', '#a82b00ff', '#a92b00ff', '#a92b00ff', '#aa2b00ff', '#aa2a00ff', '#ab2a00ff', '#ab2a00ff', '#ac2900ff', '#ac2900ff', '#ad2900ff', '#ad2900ff', '#ae2800ff', '#ae2800ff', '#af2800ff', '#af2800ff', '#b02700ff', '#b02700ff', '#b12700ff', '#b22700ff', '#b22600ff', '#b32600ff', '#b32600ff', '#b42600ff', '#b42500ff', '#b52500ff', '#b52500ff', '#b62500ff', '#b62400ff', '#b72400ff', '#b72400ff', '#b82400ff', '#b82300ff', '#b92300ff', '#b92300ff', '#ba2300ff', '#ba2200ff', '#bb2200ff', '#bb2200ff', '#bc2100ff', '#bc2100ff', '#bd2100ff', '#bd2100ff', '#be2000ff', '#be2000ff', '#bf2000ff', '#bf2000ff', '#c01f00ff', '#c01f00ff', '#c11f00ff', '#c11f00ff', '#c21e00ff', '#c21e00ff', '#c31e00ff', '#c31e00ff', '#c41d00ff', '#c51d00ff', '#c51d00ff', '#c61d00ff', '#c61c00ff', '#c71c00ff', '#c71c00ff', '#c81c00ff', '#c81b00ff', '#c91b00ff', '#c91b00ff', '#ca1b00ff', '#ca1a00ff', '#cb1a00ff', '#cb1a00ff', '#cc1a00ff', '#cc1900ff', '#cd1900ff', '#cd1900ff', '#ce1800ff', '#ce1800ff', '#cf1800ff', '#cf1800ff', '#d01700ff', '#d01700ff', '#d11700ff', '#d11700ff', '#d21600ff', '#d21600ff', '#d31600ff', '#d31600ff', '#d41500ff', '#d41500ff', '#d51500ff', '#d51500ff', '#d61400ff', '#d61400ff', '#d71400ff', '#d71400ff', '#d81300ff', '#d91300ff', '#d91300ff', '#da1300ff', '#da1200ff', '#db1200ff', '#db1200ff', '#dc1200ff', '#dc1100ff', '#dd1100ff', '#dd1100ff', '#de1000ff', '#de1000ff', '#df1000ff', '#df1000ff', '#e00f00ff', '#e00f00ff', '#e10f00ff', '#e10f00ff', '#e20e00ff', '#e20e00ff', '#e30e00ff', '#e30e00ff', '#e40d00ff', '#e40d00ff', '#e50d00ff', '#e50d00ff', '#e60c00ff', '#e60c00ff', '#e70c00ff', '#e70c00ff', '#e80b00ff', '#e80b00ff', '#e90b00ff', '#e90b00ff', '#ea0a00ff', '#ea0a00ff', '#eb0a00ff', '#eb0a00ff', '#ec0900ff', '#ed0900ff', '#ed0900ff', '#ee0900ff', '#ee0800ff', '#ef0800ff', '#ef0800ff', '#f00700ff', '#f00700ff', '#f10700ff', '#f10700ff', '#f20600ff', '#f20600ff', '#f30600ff', '#f30600ff', '#f40500ff', '#f40500ff', '#f50500ff', '#f50500ff', '#f60400ff', '#f60400ff', '#f70400ff', '#f70400ff', '#f80300ff', '#f80300ff', '#f90300ff', '#f90300ff', '#fa0200ff', '#fa0200ff', '#fb0200ff', '#fb0200ff', '#fc0100ff', '#fc0100ff', '#fd0100ff', '#fd0100ff', '#fe0000ff', '#fe0000ff', '#ff0000ff', '#ff0000ff']);
+    
+
+    color_map_b793a3194373a796213e622380046eaa.x = d3.scale.linear()
+              .domain([2100.0, 2180.0])
+              .range([0, 450 - 50]);
+
+    color_map_b793a3194373a796213e622380046eaa.legend = L.control({position: 'topright'});
+    color_map_b793a3194373a796213e622380046eaa.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_b793a3194373a796213e622380046eaa.legend.addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+
+    color_map_b793a3194373a796213e622380046eaa.xAxis = d3.svg.axis()
+        .scale(color_map_b793a3194373a796213e622380046eaa.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([2100.0, 2180.0]);
+
+    color_map_b793a3194373a796213e622380046eaa.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_b793a3194373a796213e622380046eaa.g = color_map_b793a3194373a796213e622380046eaa.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_b793a3194373a796213e622380046eaa.g.selectAll("rect")
+        .data(color_map_b793a3194373a796213e622380046eaa.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_b793a3194373a796213e622380046eaa.x(color_map_b793a3194373a796213e622380046eaa.color.domain()[i - 1]) : color_map_b793a3194373a796213e622380046eaa.x.range()[0],
+            x1: i < color_map_b793a3194373a796213e622380046eaa.color.domain().length ? color_map_b793a3194373a796213e622380046eaa.x(color_map_b793a3194373a796213e622380046eaa.color.domain()[i]) : color_map_b793a3194373a796213e622380046eaa.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_b793a3194373a796213e622380046eaa.g.call(color_map_b793a3194373a796213e622380046eaa.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("CH4 emissions");
+    
+            var circle_8a3dbd3adcde7484a756538e7c12b2ee = L.circle(
+                [34.609, -117.287],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_8a3dbd3adcde7484a756538e7c12b2ee.bindTooltip(
+                `<div>
+                     Victorville 
+ Average CH4 emissions:2001.47 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_771d3d1ff1ece82fef048e4616178748 = L.marker(
+                [34.609, -117.287],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_276c205dcb1102c010a708571a435ea9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_771d3d1ff1ece82fef048e4616178748.setIcon(icon_276c205dcb1102c010a708571a435ea9);
+        
+    
+        var popup_af8420682b05385de3588915aac2ede2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_762efd091773391cc9b627e231797911 = $(`<div id="html_762efd091773391cc9b627e231797911" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>Victorville</b></h1><br>                     <font size=4>                     Site Code: <b>VIC</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>424.56 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>573.50 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2001.47 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>2544.88 ppb</b></font>                  </div>             </div>`)[0];
+                popup_af8420682b05385de3588915aac2ede2.setContent(html_762efd091773391cc9b627e231797911);
+            
+        
+
+        marker_771d3d1ff1ece82fef048e4616178748.bindPopup(popup_af8420682b05385de3588915aac2ede2)
+        ;
+
+        
+    
+    
+            var circle_29413c4419655178827741cb3f7382d6 = L.circle(
+                [34.284, -118.473],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a22f00ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_29413c4419655178827741cb3f7382d6.bindTooltip(
+                `<div>
+                     Granada Hills 
+ Average CH4 emissions:2150.67 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_42b9494f7f18a05971d862e5d91c9cd4 = L.marker(
+                [34.284, -118.473],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_7d0213cb2c604d4ca2adc4abf69ac64c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_42b9494f7f18a05971d862e5d91c9cd4.setIcon(icon_7d0213cb2c604d4ca2adc4abf69ac64c);
+        
+    
+        var popup_1c6c261b7e1126927e9f2dc429e3bef0 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_40fd0aff3c12421782e682a333d3ef78 = $(`<div id="html_40fd0aff3c12421782e682a333d3ef78" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>Granada Hills</b></h1><br>                     <font size=4>                     Site Code: <b>GRA</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>440.74 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>560.14 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2150.67 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>10511.62 ppb</b></font>                  </div>             </div>`)[0];
+                popup_1c6c261b7e1126927e9f2dc429e3bef0.setContent(html_40fd0aff3c12421782e682a333d3ef78);
+            
+        
+
+        marker_42b9494f7f18a05971d862e5d91c9cd4.bindPopup(popup_1c6c261b7e1126927e9f2dc429e3bef0)
+        ;
+
+        
+    
+    
+            var circle_5eda386465d4658225e2715f4b6f4178 = L.circle(
+                [32.915, -118.488],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_5eda386465d4658225e2715f4b6f4178.bindTooltip(
+                `<div>
+                     San Clemente Island 
+ Average CH4 emissions:1996.59 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2e72ae8e7b40c87c21335c63284af091 = L.marker(
+                [32.915, -118.488],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_99f7fcf4f68a858533a7eef84230ac4c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_2e72ae8e7b40c87c21335c63284af091.setIcon(icon_99f7fcf4f68a858533a7eef84230ac4c);
+        
+    
+        var popup_b0fdd628f4af7f304e5501835ddfef9c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3d93b6e7e1ec9ea157733205e4ab6342 = $(`<div id="html_3d93b6e7e1ec9ea157733205e4ab6342" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>San Clemente Island</b></h1><br>                     <font size=4>                     Site Code: <b>SCI</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>422.38 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>456.05 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>1996.59 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>2192.19 ppb</b></font>                  </div>             </div>`)[0];
+                popup_b0fdd628f4af7f304e5501835ddfef9c.setContent(html_3d93b6e7e1ec9ea157733205e4ab6342);
+            
+        
+
+        marker_2e72ae8e7b40c87c21335c63284af091.bindPopup(popup_b0fdd628f4af7f304e5501835ddfef9c)
+        ;
+
+        
+    
+    
+            var circle_9e65992307a1e97afefb3f9ecef3521f = L.circle(
+                [34.137, -118.126],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#3a6300ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_9e65992307a1e97afefb3f9ecef3521f.bindTooltip(
+                `<div>
+                     Caltech 
+ Average CH4 emissions:2118.23 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5a8ac5d384d9e749d9c6c4826544aca5 = L.marker(
+                [34.137, -118.126],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_d7bd4dc0174252ec74a852532a0c6cfa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_5a8ac5d384d9e749d9c6c4826544aca5.setIcon(icon_d7bd4dc0174252ec74a852532a0c6cfa);
+        
+    
+        var popup_66c806d2c08391e717b55023a10a38f1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_9d8b058a1ffbe91a9c6e8614e8abd22a = $(`<div id="html_9d8b058a1ffbe91a9c6e8614e8abd22a" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>Caltech</b></h1><br>                     <font size=4>                     Site Code: <b>CIT</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>448.75 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>659.48 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2118.23 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>3648.61 ppb</b></font>                  </div>             </div>`)[0];
+                popup_66c806d2c08391e717b55023a10a38f1.setContent(html_9d8b058a1ffbe91a9c6e8614e8abd22a);
+            
+        
+
+        marker_5a8ac5d384d9e749d9c6c4826544aca5.bindPopup(popup_66c806d2c08391e717b55023a10a38f1)
+        ;
+
+        
+    
+    
+            var circle_b5cd676c3ddf689cfa12e7c452a405a0 = L.circle(
+                [34.021, -118.289],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#d71400ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_b5cd676c3ddf689cfa12e7c452a405a0.bindTooltip(
+                `<div>
+                     University of Southern California (downtown LA) 
+ Average CH4 emissions:2167.44 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_cad5b969ec0cf06cb59966822783e456 = L.marker(
+                [34.021, -118.289],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_9c846d1d29d697812e2e924ccb48ce23 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_cad5b969ec0cf06cb59966822783e456.setIcon(icon_9c846d1d29d697812e2e924ccb48ce23);
+        
+    
+        var popup_77cac7395438d14f90abd04e24b74d90 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_303364262760a947769186f7dc858161 = $(`<div id="html_303364262760a947769186f7dc858161" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>University of Southern California (downtown LA)</b></h1><br>                     <font size=4>                     Site Code: <b>USC</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>450.61 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>738.68 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2167.44 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>11492.45 ppb</b></font>                  </div>             </div>`)[0];
+                popup_77cac7395438d14f90abd04e24b74d90.setContent(html_303364262760a947769186f7dc858161);
+            
+        
+
+        marker_cad5b969ec0cf06cb59966822783e456.bindPopup(popup_77cac7395438d14f90abd04e24b74d90)
+        ;
+
+        
+    
+    
+            var circle_5e74940bb96daf6b82d14efa2686e4ef = L.circle(
+                [33.874, -118.277],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#fb0200ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_5e74940bb96daf6b82d14efa2686e4ef.bindTooltip(
+                `<div>
+                     Compton 
+ Average CH4 emissions:2178.69 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a508a86d624fdfeee7e9190cb71a93f6 = L.marker(
+                [33.874, -118.277],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_51d01752710d53f8bc40b31fa239e29f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_a508a86d624fdfeee7e9190cb71a93f6.setIcon(icon_51d01752710d53f8bc40b31fa239e29f);
+        
+    
+        var popup_88e483578606098afb73646f92b304b9 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b5ae7a9b0458c37d2ae4c57894436277 = $(`<div id="html_b5ae7a9b0458c37d2ae4c57894436277" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>Compton</b></h1><br>                     <font size=4>                     Site Code: <b>COM</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>451.80 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>705.41 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2178.69 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>7303.13 ppb</b></font>                  </div>             </div>`)[0];
+                popup_88e483578606098afb73646f92b304b9.setContent(html_b5ae7a9b0458c37d2ae4c57894436277);
+            
+        
+
+        marker_a508a86d624fdfeee7e9190cb71a93f6.bindPopup(popup_88e483578606098afb73646f92b304b9)
+        ;
+
+        
+    
+    
+            var circle_7f7680baa44023bf2c432006e1aa0699 = L.circle(
+                [33.88, -117.884],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e01000ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_7f7680baa44023bf2c432006e1aa0699.bindTooltip(
+                `<div>
+                     CSU Fullerton 
+ Average CH4 emissions:2170.00 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_984707e98b1b7efe4f2ab2edad47399c = L.marker(
+                [33.88, -117.884],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_f606308f9840220f4fc8444e1cff5eaa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_984707e98b1b7efe4f2ab2edad47399c.setIcon(icon_f606308f9840220f4fc8444e1cff5eaa);
+        
+    
+        var popup_bd8e12fb7a6276dfb3f2c85040e8eeb8 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2b18912a8baa0cf84d9882d6c12c1878 = $(`<div id="html_2b18912a8baa0cf84d9882d6c12c1878" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>CSU Fullerton</b></h1><br>                     <font size=4>                     Site Code: <b>FUL</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>447.46 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>607.20 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2170.00 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>9870.66 ppb</b></font>                  </div>             </div>`)[0];
+                popup_bd8e12fb7a6276dfb3f2c85040e8eeb8.setContent(html_2b18912a8baa0cf84d9882d6c12c1878);
+            
+        
+
+        marker_984707e98b1b7efe4f2ab2edad47399c.bindPopup(popup_bd8e12fb7a6276dfb3f2c85040e8eeb8)
+        ;
+
+        
+    
+    
+            var circle_e7c13130c11b4a2f0bf898739907f5d9 = L.circle(
+                [34.064, -117.584],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff0000ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_e7c13130c11b4a2f0bf898739907f5d9.bindTooltip(
+                `<div>
+                     Ontario 
+ Average CH4 emissions:2188.78 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_656216d7221a66c8243c890dbf755f61 = L.marker(
+                [34.064, -117.584],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_7225dd79fc268011c3b21f9b4bb12f96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_656216d7221a66c8243c890dbf755f61.setIcon(icon_7225dd79fc268011c3b21f9b4bb12f96);
+        
+    
+        var popup_8bb254d547d38bef8dbfeb4a0ab8db06 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4773188b8463f466f56ff84954ca8c18 = $(`<div id="html_4773188b8463f466f56ff84954ca8c18" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>Ontario</b></h1><br>                     <font size=4>                     Site Code: <b>ONT</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>449.95 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>600.71 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2188.78 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>10344.57 ppb</b></font>                  </div>             </div>`)[0];
+                popup_8bb254d547d38bef8dbfeb4a0ab8db06.setContent(html_4773188b8463f466f56ff84954ca8c18);
+            
+        
+
+        marker_656216d7221a66c8243c890dbf755f61.bindPopup(popup_8bb254d547d38bef8dbfeb4a0ab8db06)
+        ;
+
+        
+    
+    
+            var circle_265033bbf18d2ab0a81969192bbadc9f = L.circle(
+                [34.195, -118.604],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#624e00ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_265033bbf18d2ab0a81969192bbadc9f.bindTooltip(
+                `<div>
+                     Canoga Park 
+ Average CH4 emissions:2130.89 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1b0178d962c237384f4960dae8d69bb0 = L.marker(
+                [34.195, -118.604],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_5fed7c8fb028a6a4a5d469adece8c9b7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_1b0178d962c237384f4960dae8d69bb0.setIcon(icon_5fed7c8fb028a6a4a5d469adece8c9b7);
+        
+    
+        var popup_ad4fc2837580c7899fdaaf2af08da693 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_fed8168d6316e9994cbc1482d919f173 = $(`<div id="html_fed8168d6316e9994cbc1482d919f173" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>Canoga Park</b></h1><br>                     <font size=4>                     Site Code: <b>CNP</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>450.04 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>725.57 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2130.89 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>3167.65 ppb</b></font>                  </div>             </div>`)[0];
+                popup_ad4fc2837580c7899fdaaf2af08da693.setContent(html_fed8168d6316e9994cbc1482d919f173);
+            
+        
+
+        marker_1b0178d962c237384f4960dae8d69bb0.bindPopup(popup_ad4fc2837580c7899fdaaf2af08da693)
+        ;
+
+        
+    
+    
+            var circle_c83c0fd9c92be2454004870add1e9493 = L.circle(
+                [33.644, -117.844],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#008000ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_c83c0fd9c92be2454004870add1e9493.bindTooltip(
+                `<div>
+                     UC Irvine 
+ Average CH4 emissions:2087.17 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9904b0e4e4190205af08bf5f1192aae8 = L.marker(
+                [33.644, -117.844],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_145a1d33a5ebb2e0f7f1635c816b7765 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_9904b0e4e4190205af08bf5f1192aae8.setIcon(icon_145a1d33a5ebb2e0f7f1635c816b7765);
+        
+    
+        var popup_dc868d9b8078d5a36a8275f2a57dc0dc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_be9629dbec6862ce16dbb3d866e555b4 = $(`<div id="html_be9629dbec6862ce16dbb3d866e555b4" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>UC Irvine</b></h1><br>                     <font size=4>                     Site Code: <b>IRV</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>436.35 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>562.45 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2087.17 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>6137.78 ppb</b></font>                  </div>             </div>`)[0];
+                popup_dc868d9b8078d5a36a8275f2a57dc0dc.setContent(html_be9629dbec6862ce16dbb3d866e555b4);
+            
+        
+
+        marker_9904b0e4e4190205af08bf5f1192aae8.bindPopup(popup_dc868d9b8078d5a36a8275f2a57dc0dc)
+        ;
+
+        
+    
+    
+            var circle_9d1e3d8225764ed0d1011bb27dfceef6 = L.circle(
+                [32.867, -117.257],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#873c00ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15000, "stroke": true, "weight": 1}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            circle_9d1e3d8225764ed0d1011bb27dfceef6.bindTooltip(
+                `<div>
+                     La Jolla 
+ Average CH4 emissions:2142.28 ppb
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8bf167422593f5e9cdc54cb1e4b91e04 = L.marker(
+                [32.867, -117.257],
+                {"maxWidth": 300, "parseHtml": true}
+            ).addTo(map_ec49d232fbb8fc2d4a436b8a6aacf713);
+        
+    
+            var icon_d9b7c8ad79e52d822e0263a9d7baf871 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "cloud", "iconColor": "white", "markerColor": "blue", "prefix": "fa"}
+            );
+            marker_8bf167422593f5e9cdc54cb1e4b91e04.setIcon(icon_d9b7c8ad79e52d822e0263a9d7baf871);
+        
+    
+        var popup_679a5105b627733cf799059680cceff2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_59050262ddecdc1c72686eaf91b407d8 = $(`<div id="html_59050262ddecdc1c72686eaf91b407d8" style="width: 100.0%; height: 100.0%;">                 <div style="width: 300px;">                     <h1><b>La Jolla</b></h1><br>                     <font size=4>                     Site Code: <b>LJO</b><br><br>                     Average CO<sub>2</sub> (Carbon Dioxide) emissions recorded: <b>430.61 ppm</b> <br><br>                     Maximum CO<sub>2</sub> emission recorded: <b>529.32 ppm</b> <br><br>                     Average CH<sub>4</sub> (Methane) emissions recorded: <b>2142.28 ppb</b> <br><br>                     Maximum CH<sub>4</sub> emission recorded: <b>13301.00 ppb</b></font>                  </div>             </div>`)[0];
+                popup_679a5105b627733cf799059680cceff2.setContent(html_59050262ddecdc1c72686eaf91b407d8);
+            
+        
+
+        marker_8bf167422593f5e9cdc54cb1e4b91e04.bindPopup(popup_679a5105b627733cf799059680cceff2)
+        ;
+
+        
+    
+</script>
+</html>
